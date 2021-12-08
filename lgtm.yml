@@ -2,8 +2,4 @@ extraction:
   java:
     before_index:
       - |
-        echo "metadata.cfg" > "$LGTM_WORKSPACE/metadata-files.list"
-        CODEQL_EXTRACTOR_XML_ROOT="$CODEQL_DIST/xml/" \
-        CODEQL_EXTRACTOR_XML_SOURCE_ARCHIVE_DIR="$CODEQL_EXTRACTOR_JAVA_SOURCE_ARCHIVE_DIR" \
-        CODEQL_EXTRACTOR_XML_TRAP_DIR="$CODEQL_EXTRACTOR_JAVA_TRAP_DIR" \
-          "$CODEQL_DIST/xml/tools/index-files.sh" "$LGTM_WORKSPACE/metadata-files.list"
+          "$CODEQL_DIST/codeql" database index-files --language xml --include "metadata.cfg" "$CODEQL_EXTRACTOR_JAVA_WIP_DATABASE"
